@@ -7,7 +7,7 @@ import CurrencyService from './currency-exchanger.js'
 
 function displayCurrencyResults(currencyResponse) { 
   if(currencyResponse.rates) {
-    $('#currencyShow').append(`The currency is ${currencyResponse.rates.country}`); 
+    $('#currencyShow').append(`The currency is ${currencyResponse.rates}`); 
   } else {
     $('.showErrors').text(`This currency is not existed error: ${currencyResponse.message}`);
   }
@@ -20,7 +20,6 @@ $(document).ready(function() {
       const number = $('#number').val();
       const country = $('#country').val();
       
-      // clearFields();
       $('#currencyShow').html("");
       CurrencyService.getId(number, country)
         .then(function(currencyResponse) {
