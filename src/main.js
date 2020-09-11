@@ -5,21 +5,16 @@ import './css/styles.css';
 import CurrencyService from './currency-exchanger.js'
 
 
-// function
 function displayCurrencyResults(currencyResponse) { 
-  if(currencyResponse) {
-
-      $('#currencyShow').append(`The currency is ${currencyResponse.base_code.rates}`); 
-      
+  if(currencyResponse.rates) {
+    $('#currencyShow').append(`The currency is ${currencyResponse.rates.country}`); 
   } else {
     $('.showErrors').text(`This currency is not existed error: ${currencyResponse.message}`);
   }
   }
-  
 
-  // Dom
+  // UI
 $(document).ready(function() {
-
   $('#currencyInfo').click(function(event) {
       event.preventDefault();
       const number = $('#number').val();
@@ -31,7 +26,6 @@ $(document).ready(function() {
         .then(function(currencyResponse) {
           displayCurrencyResults(currencyResponse);
         });
-        console.log("hello")
     })
   });        
 
