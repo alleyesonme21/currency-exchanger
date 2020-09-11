@@ -1,7 +1,7 @@
 export default class CurrencyService {  
-  static getId(number,country) {
+  static getId(number, country) {
       console.log(`getId function running. number: ${number},country: ${country}`)
-    return fetch(`https://open.exchangerate-api.com/v6/latest?appid=${process.env.API_KEY}&q=${number}&ISO_4217=${country}`)
+    return fetch(`https://open.exchangerate-api.com/v6/latest?appid=${process.env.API_KEY}&base_code=${number}&=country${country}`)
       .then(function(currencyResponse) {
         if (!currencyResponse.ok) {
           console.log(`Error thrown`);
