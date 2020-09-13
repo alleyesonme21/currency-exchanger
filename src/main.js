@@ -4,33 +4,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CurrencyService from './currency-exchanger.js'
 
-
-function displayCurrencyResults(currencyResponse) { 
-  if(currencyResponse.rates) {
-    $('#currencyShow').append(`The currency is ${currencyResponse.rates}`); 
-  } else {
-    $('.showErrors').text(`This currency is not existed error: ${currencyResponse.message}`);
+  function currencyEX(response, number, country) {
+    if (response.rates) {
+      let rate = response.rates[country];
+      let conversionResult = number * rate;
+      $('#currencyShow').text(`The currency of  the ${country} is ${conversionResult}`);
+    } else {
+      $('.showErrors').text(`There was an error: ${response}`);
+    }
   }
+  
+  async function currencyCall(number, country) {
+    const response = await CurrencyService.getCurrency(number, country);
+    currencyEX(response, number, country);
   }
-
-  // UI
-$(document).ready(function() {
-  $('#currencyInfo').click(function(event) {
-      event.preventDefault();
-      const number = $('#number').val();
-      const country = $('#country').val();
-      
-      $('#currencyShow').html("");
-      CurrencyService.getId(number, country)
-        .then(function(currencyResponse) {
-          displayCurrencyResults(currencyResponse);
-        });
-    })
-  });        
-
-
-
-
-
-
-
+  
+  $(document).ready(function() {
+    $('#currencyInfo').click(function() {
+      let number = $('#number').val();
+      let country = $('#country').val();
+      currencyCall(number, country);
+    });
+  });
