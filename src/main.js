@@ -7,10 +7,12 @@ import CurrencyService from './currency-exchanger.js'
   function currencyEX(response, number, country) {
     if (response.rates) {
       let rate = response.rates[country];
-      let conversionResult = number * rate;
+      let conversionResult = Math.round(number * rate);
       $('#currencyShow').text(`The currency of  the ${country} is ${conversionResult}`);
+
     } else {
-      $('.showErrors').text(`There was an error: ${response}`);
+      console.log(`There was an error: ${response}`)
+      $('#showErrors').text(`There was an error: ${response}`);
     }
   }
   
@@ -20,7 +22,8 @@ import CurrencyService from './currency-exchanger.js'
   }
   
   $(document).ready(function() {
-    $('#currencyInfo').click(function() {
+    $('#currencyInfo').click(function(event) {
+      event.preventDefault();
       let number = $('#number').val();
       let country = $('#country').val();
       currencyCall(number, country);
