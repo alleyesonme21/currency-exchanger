@@ -6,28 +6,40 @@
   <title>Currency Exchanger</title>
 </head>
 <body>
-<div class="container">
-  <h1>Get Curency Exchanger Information</h1>
-  <div class="row">
-    <div class='col-md-6'>
-    <label for="number">Enter a number:</label>
-    <br>
-    <input id="number" type="text" placeholder="Enter a number">
-  </div> 
-  <div class='col-md-6'>
-    <label for="country">Enter a number:</label>
-    <select class="form-control" id="country">
-      <option value="USD">United states of America</option>
-      <option value="AUD">Australia</option>
-      <option value="BGN">Bulgaria</option>
-      <option value="CAD">Canada</option>
-      <option value="CLP">Chile</option>
-      <option value="GBP">United Kingdom</option>
-      <option value="BRL">Brazil</option>
-    </select>
+  <div class="container">
+    <div class="well">
+      <h1>Get Curency Exchanger Information</h1>
+    </div>
+    <form id="formOne">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="number">Enter a number:</label>
+          <br/>
+          <input id="number" type="text" placeholder="Enter a number">
+        </div>
+        <div class="col-md-6">
+          <label for="country">Enter a country:</label>
+          <br/>
+          <select class="form-control" id="country">
+            <option value="USD">United states of America</option>
+            <option value="AUD">Australia</option>
+            <option value="BGN">Bulgaria</option>
+            <option value="CAD">Canada</option>
+            <option value="CLP">Chile</option>
+            <option value="GBP">United Kingdom</option>
+            <option value="BRL">Brazil</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-info btn" id="currencyInfo">Curency-Exchanger</button>
+    </form>
+    <div id="currencyShow">
+
+    </div>
+    
+    <div id="showErrors">
+  
+    </div>    
   </div>
-  <button class="btn-info btn-lg" id="currencyInfo">Curency-Exchanger</button>
-  <div id="currencyShow"></div>
-</div>
 </body>
 </html>

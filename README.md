@@ -1,4 +1,4 @@
-# Super Galactic Age Calculator
+indent# Super Galactic Age Calculator
 Created: 9/11/2020
  By Johnny Duverseau
 # Description
